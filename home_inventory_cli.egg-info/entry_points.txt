@@ -1,0 +1,2 @@
+[console_scripts]
+home-inventory = home_inventory.cli:main

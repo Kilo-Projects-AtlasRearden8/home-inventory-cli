@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "home-inventory-cli"
+version = "0.1.0"
+description = "Local-first CLI to document household belongings (rooms, items, values, photo references) with JSON storage and CSV export for insurance."
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [{name = "Asdale Dynamics, LLC"}]
+keywords = ["home", "inventory", "insurance", "cli", "json", "csv"]
+
+[project.scripts]
+home-inventory = "home_inventory.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["home_inventory*"]

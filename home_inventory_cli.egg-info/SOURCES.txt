@@ -1,0 +1,14 @@
+LICENSE
+README.md
+pyproject.toml
+home_inventory/__init__.py
+home_inventory/cli.py
+home_inventory/export.py
+home_inventory/models.py
+home_inventory/storage.py
+home_inventory_cli.egg-info/PKG-INFO
+home_inventory_cli.egg-info/SOURCES.txt
+home_inventory_cli.egg-info/dependency_links.txt
+home_inventory_cli.egg-info/entry_points.txt
+home_inventory_cli.egg-info/top_level.txt
+tests/test_entries.py

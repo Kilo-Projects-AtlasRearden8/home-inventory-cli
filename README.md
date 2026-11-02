@@ -1,0 +1,85 @@
+# Home Inventory CLI
+
+A local-first command-line tool for documenting household belongings — rooms, items, values, and photo references — with JSON storage and CSV export for insurance records. Built and published by **Asdale Dynamics, LLC**.
+
+## What it does
+
+- Create and manage a home inventory stored in a local JSON file (no cloud, no accounts, no API keys)
+- Add rooms and items, each with a dollar value, optional photo reference, and optional description
+- List all rooms with per-room and total values
+- Remove items or rooms
+- Export the full inventory to CSV (one row per item: room, item, value, photo, description) for insurance paperwork
+
+## Who this is for
+
+This tool is part of Asdale Dynamics, LLC's line of small-business and life-admin helpers: practical, tested, local-first software that anyone can run without signing up for anything. Indiana, formed October 2026.
+
+## Install
+
+```bash
+pip install .
+```
+
+Or run straight from the folder:
+
+```bash
+python3 -m home_inventory.cli ...
+```
+
+## Usage
+
+Initialize a new inventory file:
+
+```bash
+home-inventory init inventory.json
+```
+
+Add a room:
+
+```bash
+home-inventory --file inventory.json add-room "Living Room"
+```
+
+Add an item:
+
+```bash
+home-inventory --file inventory.json add-item "Living Room" "Television" --value 699.99 --photo photos/tv.jpg --description "55-inch OLED"
+```
+
+List everything:
+
+```bash
+home-inventory --file inventory.json list
+```
+
+Remove an item:
+
+```bash
+home-inventory --file inventory.json remove-item "Living Room" "Television"
+```
+
+Export to CSV for insurance:
+
+```bash
+home-inventory --file inventory.json export home_inventory.csv
+```
+
+The CSV contains columns: `room, item, value, photo, description`.
+
+## Storage
+
+All data stays on your machine in a plain JSON file you control. There are no servers, no keys, and no personal data collected by Asdale Dynamics, LLC. Photo references are stored as paths only; photos themselves are not touched.
+
+## Tests
+
+```bash
+python3 -m pytest
+```
+
+## License
+
+MIT License. Copyright (c) 2026 Asdale Dynamics, LLC. See LICENSE.
+
+## About Asdale Dynamics, LLC
+
+Asdale Dynamics, LLC is an Indiana company founded by Dylan Asdale, a registered nurse turned AI author. The LLC publishes beginner-friendly AI education, books and guides, practical tools, and templates — AI tools, agents/MCP, local AI, free AI coding, GitHub, automation, privacy, small-business and author tools, life-admin helpers, and healthcare-worker AI aids (education only, never medical advice). Learn more at dylanasdale.github.io.
