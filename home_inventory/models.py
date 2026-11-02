@@ -13,6 +13,10 @@ class Item:
     photo: Optional[str] = None
     description: str = ""
 
+    def __post_init__(self) -> None:
+        if self.value < 0:
+            raise ValueError(f"Item '{self.name}' value cannot be negative")
+
     def to_dict(self) -> dict:
         return asdict(self)
 

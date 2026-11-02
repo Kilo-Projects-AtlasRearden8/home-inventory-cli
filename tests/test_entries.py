@@ -113,3 +113,43 @@ def test_csv_export():
     assert rows[0]["photo"] == "photos/toaster.jpg"
     assert rows[1]["item"] == "Mixer"
     assert rows[1]["photo"] == ""
+
+
+def test_remove_room():
+    inventory = Inventory()
+    inventory.add_room(Room(name="Attic"))
+    inventory.find_room("Attic").add_item(Item(name="Box", value=10.0))
+    removed = inventory.remove_room("Attic")
+    assert removed.name == "Attic"
+    assert inventory.find_room("Attic") is None
+
+
+def test_remove_missing_room_raises():
+    inventory = Inventory()
+    try:
+        inventory.remove_room("Missing")
+    except KeyError:
+        pass
+    else:
+        raise AssertionError("Expected KeyError for missing room")
+
+
+def test_negative_value_rejected():
+    try:
+        Item(name="Lamp", value=-5.0)
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("Expected ValueError for negative value")
+
+
+def test_edit_item():
+    room = Room(name="Living Room")
+    room.add_item(Item(name="TV", value=699.99, photo="photos/tv.jpg"))
+    item = room.find_item("TV")
+    item.value = 599.99
+    item.photo = "photos/tv_new.jpg"
+    item.description = "OLED"
+    assert item.value == 599.99
+    assert item.photo == "photos/tv_new.jpg"
+    assert item.description == "OLED"
